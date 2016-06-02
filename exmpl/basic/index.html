@@ -1,0 +1,48 @@
+<html>
+<head>
+	<script type="text/javascript" src="cordova.js"></script>
+</head>
+<body>
+
+<script>
+
+var appId = "vungleT";
+/*
+var appId;
+//android
+if (navigator.userAgent.match(/Android/i)) {
+	appId = "vungleT";
+}
+//ios
+else if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
+	appId = "Test_iOS";
+}
+*/
+
+document.addEventListener("deviceready", function(){
+
+	window.vungle.setUp(appId);
+
+	window.vungle.onRewardedVideoAdLoaded = function() {
+		alert('onRewardedVideoAdLoaded');
+	};	
+	window.vungle.onRewardedVideoAdShown = function() {
+		alert('onRewardedVideoAdShown');
+	};
+	window.vungle.onRewardedVideoAdHidden = function() {
+		alert('onRewardedVideoAdHidden');
+	};
+	window.vungle.onRewardedVideoAdCompleted = function() {
+		alert('onRewardedVideoAdCompleted');
+	};	
+}, false);
+</script>
+
+<p><button onclick="window.vungle.showRewardedVideoAd();">showRewardedVideoAd</button></p>
+<br>
+<p><button onclick="alert(window.vungle.loadedRewardedVideoAd());">loadedRewardedVideoAd</button></p>
+<br>
+<p><button onclick="alert(window.vungle.isShowingRewardedVideoAd());">isShowingRewardedVideoAd</button></p>
+
+</body>
+</html>
