@@ -1,0 +1,36 @@
+{
+  "name": "myvideoad",
+  "version": "2",
+  "description": "vungle video ad",
+  "cordova": {
+    "id": "myvideoad",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yedagig/myvideoad.git"
+  },
+  "keywords": [
+    "cordova",
+    "plugin",
+    "ad",
+    "video",
+    "vungle",
+    "monetisation",
+    "ecosystem:cordova",
+    "cordova-android",
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "author": "yogya",
+  "license": "Public",
+    },
+
+}
