@@ -1,0 +1,107 @@
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="myvideoad"
+        version="2">
+		
+    <name>Cordova Vungle plugin</name>
+    <description>vungle rewarded video ad</description>
+    <author>yogya</author>		
+    <license>Public</license>
+    <keywords>cordova,plugin,ad,video,vungle</keywords>
+    <repo>https://github.com/yedagig/myvideoad</repo>
+  	<engines>
+	    <engine name="cordova" version=">=3.0.0" />
+	</engines>
+	 
+    <js-module src="www/vungle.js" name="vungle">
+        <clobbers target="window.vungle" />
+    </js-module>	
+ 
+    <!-- android -->
+    <platform name="android">
+		<config-file target="res/xml/config.xml" parent="/*">
+		  <feature name="Vungle">
+			<param name="android-package" value="com.revolution.cordova.plugin.ad.vungle.Vungle" />
+		  </feature>		
+		</config-file>
+		
+		<config-file target="AndroidManifest.xml" parent="/manifest/application">
+			<activity
+			  android:name="com.vungle.publisher.FullScreenAdActivity"
+			  android:configChanges="keyboardHidden|orientation|screenSize"
+			  android:theme="@android:style/Theme.NoTitleBar.Fullscreen"/>
+
+			<service android:name="com.vungle.publisher.VungleService" android:exported="false"/>
+		</config-file>
+		
+		<config-file target="AndroidManifest.xml" parent="/*">
+		  <uses-permission android:name="android.permission.INTERNET" />
+		  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+		  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+		</config-file>
+
+		
+<!--		
+		<config-file target="AndroidManifest.xml" parent="/manifest/application">
+			<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+		</config-file>
+-->		
+	
+		
+      	<source-file src="src/android/Vungle.java" target-dir="src/com/cranberrygame/cordova/plugin/ad/vungle" />					  
+
+	    <source-file src="src/android/dagger-2.1.jar" target-dir="libs" />		
+	    <source-file src="src/android/javax.inject-1.jar" target-dir="libs" />		
+	    <source-file src="src/android/nineoldandroids-2.4.0.jar" target-dir="libs" />		
+	    <source-file src="src/android/vungle-publisher-adaptive-id-3.3.5.jar" target-dir="libs" />
+		<
+	
+		
+<!--
+		<dependency id="com.google.playservices" url="https://github.com/MobileChromeApps/google-play-services" commit="00f511a8ce332d4586f067240460bfe978ace2ae" />
+		<dependency id="com.google.playservices@21.0.0" />
+
+		<dependency id="android.support.v4@1.0.0" />
+-->		
+		<dependency id="cordova-plugin-extras-google-play-services" />
+<!--		
+		<dependency id="cordova-plugin-extras-android-support-library-v4" />		
+-->		
+    </platform> 
+	
+	<!-- ios -->
+	<platform name="ios">        
+        <config-file target="config.xml" parent="/*">
+            <feature name="Vungle">
+                <param name="ios-package" value="Vungle" />
+            </feature>
+        </config-file>
+		
+        <header-file src="src/ios/Vungle.h" />
+        <source-file src="src/ios/Vungle.m" />
+        		
+		<!--framework src="src/ios/VungleSDK.embeddedframework" custom="true" /-->
+		<framework src="src/ios/VungleSDK.embeddedframework/VungleSDK.framework" custom="true" />
+		<resource-file src="src/ios/VungleSDK.embeddedframework/Resources/__vungle.db" />
+		<resource-file src="src/ios/VungleSDK.embeddedframework/Resources/vg_close.png" />
+		<resource-file src="src/ios/VungleSDK.embeddedframework/Resources/vg_cta.png" />
+		<resource-file src="src/ios/VungleSDK.embeddedframework/Resources/vg_mute_off.png" />
+		<resource-file src="src/ios/VungleSDK.embeddedframework/Resources/vg_mute_on.png" />
+		<resource-file src="src/ios/VungleSDK.embeddedframework/Resources/vg_timer.png" />
+		
+		<framework src="AdSupport.framework" />
+		<framework src="AudioToolbox.framework" />
+		<framework src="AVFoundation.framework" />
+		<framework src="CFNetwork.framework" />
+		<framework src="CoreGraphics.framework" />
+		<framework src="CoreMedia.framework" />
+		<framework src="Foundation.framework" />
+		<framework src="libz.dylib" />
+		<framework src="libsqlite3.dylib" />
+		<framework src="MediaPlayer.framework" />
+		<framework src="QuartzCore.framework" />
+		<framework src="StoreKit.framework" />
+		<framework src="SystemConfiguration.framework" />
+		<framework src="UIKit.framework" />
+    </platform>
+</plugin>
